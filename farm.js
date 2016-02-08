@@ -1,5 +1,7 @@
 console.log("hello");
 
+var IntervalID;
+
 var Delay = 225;
 var Profiles = {};
 
@@ -28,6 +30,8 @@ chrome.storage.sync.get(["Profile", "Delay"], function(Items)
 	
 	Profiles.Current = Profiles[Items.Profile];
 	Delay = Items.Delay;
+	
+	IntervalID = window.setInterval(Click, Delay);
 });
 
 var VillageList = document.getElementById("plunder_list").firstElementChild.children;
@@ -60,7 +64,6 @@ function HasSufficientUnits()
 }
 
 console.log(Delay);
-var IntervalID = window.setInterval(Click, Delay);
 
 function Click()
 {
