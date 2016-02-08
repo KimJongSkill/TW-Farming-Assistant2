@@ -24,10 +24,14 @@ chrome.storage.sync.get(["Profile", "Delay"], function(Items)
 	*	the user.
 	*/
 	if (Items.Profile == null || Items.Delay == null)
+	{
 		window.alert("Unable to retrieve settings.\nDefault values will be used.");
-	
-	Profiles.Current = Profiles[Items.Profile];
-	Delay = Items.Delay;
+	}
+	else
+	{
+		Profiles.Current = Profiles[Items.Profile];
+		Delay = Items.Delay;
+	}
 	
 	IntervalID = window.setInterval(Click, Delay);
 });
