@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tribal Wars Auto-Farm Tool - Options</title>
+</head>
+
+<body>
+	<form id="TemplateForm">
+	<h3>Template</h3>
+		<div class="radio">
+			<label>
+				<input type="radio" name="Template" value="A" checked>Use A</input>
+				<span></span>
+			</label>
+		</div>
+		<div class="radio">
+			<label>
+				<input type="radio" name="Template" value="B">Use B</input>
+				<span></span>
+			</label>
+		</div>
+	</form>
+	
+	<form id="DelayForm">
+		<h3>Delay</h3>
+		<div>
+			Wait 
+			<input type="number" value=225>ms</input>
+			between attacks
+		</div>
+	</form>
+	
+	<div id="Status"></div>
+	
+	<div>
+		<button id="Save">Save</button>
+	</div>
+	
+	<script src="options.js"></script>
+</body>
+</html>

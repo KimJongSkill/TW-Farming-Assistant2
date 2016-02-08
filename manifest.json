@@ -1,0 +1,69 @@
+{
+	"manifest_version": 2,
+	
+	"name": "Tribal Wars Farming Assistant²",
+	"short_name": "TW Farming Assistant²",
+	"description": "Automate your Farming Assistant",
+	"version": "1.0",
+	
+	"icons":
+	{
+		"16": "logo16.png",
+		"48": "logo48.png",
+		"128": "logo128.png"
+	},
+	
+	"offline_enabled": false,
+
+	"page_action":
+	{
+		"default_icon": "storage.png",
+		"default_title": "Send attacks"
+	},
+	
+	"options_ui":
+	{
+		"page": "options.html",
+		"chrome_style": true
+	},
+	
+	"event_rules":
+	[
+		{
+			"event": "declarativeContent.onPageChanged",
+			"conditions":
+			[{
+				"type": "declarativeContent.PageStateMatcher",
+				"pageUrl":
+				{
+					"pathPrefix": "/game.php",
+					"querySuffix": "screen=am_farm",
+					"schemes": ["https"]
+				}
+			}],
+			"actions": [{"type": "declarativeContent.ShowPageAction"}]
+		}
+	],
+	
+	"commands":
+	{
+		"_execute_page_action":
+		{
+			"suggested_key": {"default": "Ctrl+Shift+F"},
+			"description": "Send attacks"
+		}
+	},
+	
+	"background":
+	{
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+	
+	"permissions": 
+	[
+		"activeTab",
+		"declarativeContent",
+		"storage"
+	]
+}
