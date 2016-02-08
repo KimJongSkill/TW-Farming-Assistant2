@@ -1,5 +1,3 @@
-console.log("hello");
-
 var IntervalID;
 
 var Delay = 225;
@@ -62,8 +60,6 @@ function HasSufficientUnits()
 	
 	return true;
 }
-
-console.log(Delay);
 
 function Click()
 {
