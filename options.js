@@ -1,9 +1,9 @@
 Status.Set = function()
 {
 	if (chrome.runtime.lastError == null)
-		document.getElementById("Status").textContent = "Success!";
+		document.getElementById("Status").textContent = "Success";
 	else
-		document.getElementById("Status").textContent = "Failed!";
+		document.getElementById("Status").textContent = "Failed";
 	
 	window.setTimeout(Status.Clear, 750 /* ms */);
 }
