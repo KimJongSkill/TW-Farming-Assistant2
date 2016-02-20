@@ -1,6 +1,5 @@
 var IntervalID;
 
-var Delay = 225;
 var Profiles = {};
 
 Profiles.A = {
@@ -27,9 +26,9 @@ chrome.storage.sync.get(["Profile", "Delay"], function(Items)
 		Delay = Items.Delay;
 	
 	if (Items.Profile == "Auto")
-		IntervalID = window.setInterval(ClickAuto, Delay);
+		IntervalID = window.setInterval(ClickAuto, Items.Delay);
 	else
-		IntervalID = window.setInterval(ClickSelected, Delay, Profiles[Items.Profile]);
+		IntervalID = window.setInterval(ClickSelected, Items.Delay, Profiles[Items.Profile]);
 });
 
 var VillageList = document.getElementById("plunder_list").firstElementChild.children;
