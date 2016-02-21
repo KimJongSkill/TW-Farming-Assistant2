@@ -28,9 +28,20 @@ chrome.storage.sync.get(["Profile", "Delay"], function(Items)
 	}
 	
 	if (Items.Profile == "Auto")
-		IntervalID = window.setInterval(ClickAuto, Items.Delay);
+	{
+		var Tables = document.querySelectorAll("#content_value > div.vis > div > form tbody");
+		var CapacityA = Tables[Profiles.A.Value].lastElementChild.lastElementChild.innerHTML;
+		var CapacityB = Tables[Profiles.B.Value].lastElementChild.lastElementChild.innerHTML;
+		
+		if (CapacityA > CapacityB)
+			IntervalID = window.setInterval(ClickAuto, Items.Delay, Profiles.A, Profiles.B);
+		else
+			IntervalID = window.setInterval(ClickAuto, Items.Delay, Profiles.B, Profiles.A);
+	}
 	else
+	{
 		IntervalID = window.setInterval(ClickSelected, Items.Delay, Profiles[Items.Profile]);
+	}
 });
 
 var VillageList = document.getElementById("plunder_list").firstElementChild.children;
@@ -71,14 +82,14 @@ function ClickSelected(Profile)
 		window.clearInterval(IntervalID);
 }
 
-function ClickAuto()
+function ClickAuto(Max, Min)
 {
 	if (VillageList.length > 1)
 	{
-		if (VillageList[1].getElementsByTagName("img")[2].src.endsWith("1.png") && HasSufficientUnits(Profiles.A))
-			VillageList[1].querySelector(Profiles.A.Icon).click();
-		else if (HasSufficientUnits(Profiles.B))
-			VillageList[1].querySelector(Profiles.B.Icon).click();
+		if (VillageList[1].getElementsByTagName("img")[2].src.endsWith("1.png") && HasSufficientUnits(Max))
+			VillageList[1].querySelector(Max.Icon).click();
+		else if (HasSufficientUnits(Min))
+			VillageList[1].querySelector(Min.Icon).click();
 		else
 			window.clearInterval(IntervalID);
 	}
