@@ -41,7 +41,7 @@
 				"pageUrl":
 				{
 					"pathPrefix": "/game.php",
-					"querySuffix": "screen=am_farm",
+					"queryContains": "screen=am_farm",
 					"schemes": ["https"]
 				}
 			}],
