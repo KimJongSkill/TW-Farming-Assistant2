@@ -1,6 +1,6 @@
 chrome.pageAction.onClicked.addListener(function()
 {
-	chrome.tabs.executeScript({file: "farm.js"});
+	chrome.tabs.executeScript({file: "/js/farm.js"});
 });
 
 chrome.runtime.onInstalled.addListener(function()

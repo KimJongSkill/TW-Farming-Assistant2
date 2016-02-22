@@ -8,22 +8,22 @@
 	
 	"icons":
 	{
-		"16": "logo16.png",
-		"48": "logo48.png",
-		"128": "logo128.png"
+		"16": "/res/logo16.png",
+		"48": "/res/logo48.png",
+		"128": "/res/logo128.png"
 	},
 	
 	"offline_enabled": false,
 
 	"page_action":
 	{
-		"default_icon": "storage.png",
+		"default_icon": "/res/storage.png",
 		"default_title": "Send attacks"
 	},
 	
 	"options_ui":
 	{
-		"page": "options.html",
+		"page": "/ui/options.html",
 		"chrome_style": true
 	},
 	
@@ -56,7 +56,7 @@
 	
 	"background":
 	{
-		"scripts": ["background.js"],
+		"scripts": ["/js/background.js"],
 		"persistent": false
 	},
 	
