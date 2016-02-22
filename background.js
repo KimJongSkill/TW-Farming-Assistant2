@@ -11,7 +11,7 @@ chrome.runtime.onInstalled.addListener(function()
 		{
 			chrome.storage.sync.set(
 			{
-				"Profile": "A",
+				"Profile": "Auto",
 				"Delay": 225
 			});
 		}
