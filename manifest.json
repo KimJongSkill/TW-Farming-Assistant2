@@ -8,16 +8,20 @@
 	
 	"icons":
 	{
-		"16": "/res/logo16.png",
-		"48": "/res/logo48.png",
-		"128": "/res/logo128.png"
+		"16": "/res/windmill16.png",
+		"48": "/res/windmill48.png",
+		"128": "/res/windmill128.png"
 	},
 	
 	"offline_enabled": false,
 
 	"page_action":
 	{
-		"default_icon": "/res/storage.png",
+		"default_icon":
+		{
+			"19": "/res/tractor19.png",
+			"38": "/res/tractor38.png"
+		},
 		"default_title": "Send attacks"
 	},
 	
