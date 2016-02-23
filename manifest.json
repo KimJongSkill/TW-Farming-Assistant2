@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 	
-	"name": "Tribal Wars Farming Assistant²",
-	"short_name": "TW Farming Assistant²",
+	"name": "Tribal Wars Tractor",
+	"short_name": "TW Tractor",
 	"description": "Automate your Farming Assistant",
 	"version": "1.2",
 	
@@ -22,7 +22,7 @@
 			"19": "/res/tractor19.png",
 			"38": "/res/tractor38.png"
 		},
-		"default_title": "Send attacks"
+		"default_title": "Start farming"
 	},
 	
 	"options_ui":
