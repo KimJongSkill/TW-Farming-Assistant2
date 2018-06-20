@@ -30,8 +30,8 @@ chrome.storage.sync.get(["Profile", "Delay"], Items => {
 
 	if (Items.Profile == "Auto") {
 		const Tables = document.querySelectorAll("#content_value > div.vis > div > form tbody");
-		const CapacityA = Tables[Profiles.A.Value].lastElementChild.lastElementChild.innerHTML;
-		const CapacityB = Tables[Profiles.B.Value].lastElementChild.lastElementChild.innerHTML;
+		const CapacityA = parseInt(Tables[Profiles.A.Value].lastElementChild.lastElementChild.innerHTML);
+		const CapacityB = parseInt(Tables[Profiles.B.Value].lastElementChild.lastElementChild.innerHTML);
 
 		if (CapacityA > CapacityB) {
 			ClickAuto(Items.Delay, Profiles.A, Profiles.B);
