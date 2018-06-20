@@ -1,8 +1,3 @@
-// Obtain list of villages and skip first two elements (they do not represent villages)
-const VillageList = Array.from(
-	document.getElementById("plunder_list").firstElementChild.children
-).splice(2);
-
 const Profiles = {
 	A: {
 		Value: 0,
@@ -51,6 +46,15 @@ function Sleep(ms) {
 	});
 }
 
+function GetVillageList() {
+	/*
+	*	Obtain a list of villages and skip the first two elements
+	*	(they do not represent villages)
+	*/
+	return Array.from(document.getElementById("plunder_list")
+		.firstElementChild.children).splice(2);
+}
+
 function GetUnitsHome() {
 	const UnitsList = document.getElementsByClassName("unit-item");
 	let Output = new Map();
@@ -76,7 +80,7 @@ function HasSufficientUnits(Profile) {
 }
 
 async function ClickSelected(Interval, Profile) {
-	for (const Village of VillageList) {
+	for (const Village of GetVillageList()) {
 		if (!HasSufficientUnits(Profile)) break;
 
 		Village.querySelector(Profile.Icon).click();
@@ -85,7 +89,7 @@ async function ClickSelected(Interval, Profile) {
 }
 
 async function ClickAuto(Interval, Max, Min) {
-	for (const Village of VillageList) {
+	for (const Village of GetVillageList()) {
 		if (Village.getElementsByTagName("img")[2].src.endsWith("1.png") && HasSufficientUnits(Max)) {
 			Village.querySelector(Max.Icon).click();
 		} else if (HasSufficientUnits(Min)) {
