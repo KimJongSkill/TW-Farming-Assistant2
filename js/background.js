@@ -1,16 +1,11 @@
-chrome.pageAction.onClicked.addListener(function()
-{
-	chrome.tabs.executeScript({file: "/js/farm.js"});
+chrome.pageAction.onClicked.addListener(() => {
+	chrome.tabs.executeScript({ file: "/js/farm.js" });
 });
 
-chrome.runtime.onInstalled.addListener(function()
-{
-	chrome.storage.sync.get(["Profile", "Delay"], function(Items)
-	{
-		if (!Items.Profile || !Items.Delay)
-		{
-			chrome.storage.sync.set(
-			{
+chrome.runtime.onInstalled.addListener(() => {
+	chrome.storage.sync.get(["Profile", "Delay"], ({ Profile, Delay }) => {
+		if (!Profile || !Delay) {
+			chrome.storage.sync.set({
 				"Profile": "Auto",
 				"Delay": 225
 			});
