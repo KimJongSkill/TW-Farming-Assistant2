@@ -25,8 +25,8 @@ chrome.storage.sync.get(["Profile", "Delay"], Items => {
 
 	if (Items.Profile == "Auto") {
 		const Tables = document.querySelectorAll("#content_value > div.vis > div > form tbody");
-		const CapacityA = parseInt(Tables[Profiles.A.Value].lastElementChild.lastElementChild.innerHTML);
-		const CapacityB = parseInt(Tables[Profiles.B.Value].lastElementChild.lastElementChild.innerHTML);
+		const CapacityA = Number(Tables[Profiles.A.Value].lastElementChild.lastElementChild.innerHTML);
+		const CapacityB = Number(Tables[Profiles.B.Value].lastElementChild.lastElementChild.innerHTML);
 
 		if (CapacityA > CapacityB) {
 			ClickAuto(Items.Delay, Profiles.A, Profiles.B);
@@ -60,7 +60,7 @@ function GetUnitsHome() {
 	let Output = new Map();
 
 	for (const Unit of UnitsList) {
-		Output.set(Unit.id, window.parseInt(Unit.innerHTML));
+		Output.set(Unit.id, Number(Unit.innerHTML));
 	}
 
 	return Output;
@@ -70,8 +70,8 @@ function HasSufficientUnits(Profile) {
 	const UnitsHome = GetUnitsHome();
 
 	for (const [Unit, Count] of UnitsHome.entries()) {
-		if (window.parseInt(document.querySelectorAll(`[name=${Unit}]`)
-			.item(Profile.Value).getAttribute("value")) > Count) {
+		if (Number(document.querySelectorAll(`[name=${Unit}]`)[Profile.Value]
+			.getAttribute("value")) > Count) {
 			return false;
 		}
 	}
