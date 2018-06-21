@@ -69,9 +69,11 @@ function GetUnitsHome() {
 function HasSufficientUnits(Profile) {
 	const UnitsHome = GetUnitsHome();
 
-	for (const [Unit, Count] of UnitsHome.entries()) {
-		if (Number(document.querySelectorAll(`[name=${Unit}]`)[Profile.Value]
-			.getAttribute("value")) > Count) {
+	for (const [Unit, Have] of UnitsHome.entries()) {
+		const Required = document.querySelectorAll(`[name=${Unit}]`)
+			.item(Profile.Value).getAttribute("value");
+
+		if (Number(Required) > Have) {
 			return false;
 		}
 	}
