@@ -51,8 +51,8 @@ function GetVillageList() {
 	*	Obtain a list of villages and skip the first two elements
 	*	(they do not represent villages)
 	*/
-	return Array.from(document.getElementById("plunder_list")
-		.firstElementChild.children).splice(2);
+	const List = document.getElementById("plunder_list").firstElementChild.children;
+	return Array.from(List).splice(2);
 }
 
 function GetUnitsHome() {
