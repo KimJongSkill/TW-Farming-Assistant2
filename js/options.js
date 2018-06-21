@@ -1,38 +1,32 @@
-Status.Set = function()
-{
-	if (chrome.runtime.lastError == null)
-		document.getElementById("Status").textContent = "Success";
-	else
-		document.getElementById("Status").textContent = "Failed";
-	
-	window.setTimeout(Status.Clear, 750 /* ms */);
+function UpdateStatus() {
+	const Status = document.getElementById("Status");
+	if (chrome.runtime.lastError == null) {
+		Status.textContent = "Success";
+	} else {
+		Status.textContent = "Failed";
+	}
+
+	setTimeout(() => Status.textContent = "", 750);
 }
 
-Status.Clear = function()
-{
-	document.getElementById("Status").textContent = "";
-}
+function Save() {
+	const Template = document.querySelector("#TemplateForm input[name=Template]:checked");
+	const Delay = document.querySelector("#DelayForm input");
 
-function Save()
-{
-	var Template = document.querySelector("input[name=Template]:checked");
-	var Delay = document.getElementById("DelayForm").querySelector("input");
-	
-	chrome.storage.sync.set(
-	{
+	chrome.storage.sync.set({
 		"Profile": Template.value,
-		"Delay": window.parseInt(Delay.value)
-	}, Status.Set);
+		"Delay": Number(Delay.value)
+	}, UpdateStatus);
 }
 
-function Restore()
-{
-	chrome.storage.sync.get(["Profile", "Delay"], function(Item)
-	{	
-		if (Item.Profile != null)
-			document.getElementById("TemplateForm").querySelector("input[value=" + Item.Profile + "]").checked = true;
-		if (Item.Delay != null)
-			document.getElementById("DelayForm").querySelector("input").value = Item.Delay;
+function Restore() {
+	chrome.storage.sync.get(["Profile", "Delay"], ({ Profile, Delay }) => {
+		if (Profile != null) {
+			document.querySelector(`#TemplateForm input[value=${Profile}]`).checked = true;
+		}
+		if (Delay != null) {
+			document.querySelector("#DelayForm input").value = Delay;
+		}
 	});
 }
 
